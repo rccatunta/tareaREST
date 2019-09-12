@@ -1,5 +1,7 @@
 package com.carpoollp.ruta;
 
+import org.springframework.http.MediaType;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,9 +17,12 @@ public class RutaControlador {
     List<Ruta> todo(){
         return repositorio.findAll();
     }
+
+    //@RequestMapping(value = "/rutas", method = RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @PostMapping("/rutas")
-    Ruta nuevaRuta(@RequestBody Ruta nuevaRuta){
-        return repositorio.save(nuevaRuta);
+    Ruta nuevaRuta(@RequestBody Ruta rutanueva){
+        System.out.println(rutanueva);
+        return repositorio.save(rutanueva);
     }
 
     @GetMapping("/rutas/{id}")
